@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let ary = [1, [2, [3, [4, 5]]], 6];
+        let newary = [];
+        //第一种方法
+        function toArray(arr){      //arr是多维数组
+            arr.forEach?(arr.forEach(item=>{
+                item.forEach?toArray(item):newary.push(item)
+            })):newary.push(arr);
+            return newary
+        }
+        toArray(ary);
+        console.log(newary)
+        //第二种方法
+        let res = ary.flat(Infinity);
+        console.log(res);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

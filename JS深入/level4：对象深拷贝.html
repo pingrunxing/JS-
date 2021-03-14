@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var data = {
+            age: 18,
+            name: "liuruchao",
+            education: ["小学", "初中", "高中", "大学", undefined, null],
+            likesFood: new Set(["fish", "banana"]),
+            friends: [
+                { name: "summer", sex: "woman" },
+                { name: "daWen", sex: "woman" },
+                { name: "yang", sex: "man" }],
+            work: {
+                time: "2019",
+                project: { name: "test", obtain: ["css", "html", "js"] }
+            },
+            play: function () { console.log("玩滑板"); }
+        }
+
+        function deepClone(obj) {
+            let result = typeof obj.splice === "function" ? [] : {};
+            if (obj && typeof obj === 'object') {
+                for (let key in obj) {
+                    if (obj[key] && typeof obj[key] === 'object') {
+                        result[key] = deepClone(obj[key]);//如果对象的属性值为object的时候，递归调用deepClone,即在吧某个值对象复制一份到新的对象的对应值中。
+                    } else {
+                        result[key] = obj[key];//如果对象的属性值不为object的时候，直接复制参数对象的每一个键值到新的对象对应的键值对中。
+                    }
+
+                }
+                return result;
+            }
+            return obj;
+        }
+        var liudehua = deepClone(data);
+        alert(liudehua.age);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
