@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var data = {
+            age: 18,
+            name: "liuruchao",
+            education: ["小学", "初中", "高中", "大学", undefined, null],
+            likesFood: new Set(["fish", "banana"]),
+            friends: [
+                { name: "summer", sex: "woman" },
+                { name: "daWen", sex: "woman" },
+                { name: "yang", sex: "man" }],
+            work: {
+                time: "2019",
+                project: { name: "test", obtain: ["css", "html", "js"] }
+            },
+            play: function () { console.log("玩滑板"); }
+        }
+//_tmp和result是相互独立的，没有任何联系，有各自的存储空间。
+let deepClone = function (obj) {
+    let _tmp = JSON.stringify(obj);//将对象转换为json字符串形式
+    let result = JSON.parse(_tmp);//将转换而来的字符串转换为原生js对象
+    return result;
+};
+
+
+let test = deepClone(data);
+console.log(test);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
